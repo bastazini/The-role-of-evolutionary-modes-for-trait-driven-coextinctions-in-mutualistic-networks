@@ -57,4 +57,4 @@ arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
 abline(v=0,lty=2, lwd=3,col="red")
 axis(side=2,at=x,label=c("Weak phylogenetic signal","Strong phylogenetic signal", "Strong phylognetic signal"),cex.lab=14, las=2)
 
-###
+####
