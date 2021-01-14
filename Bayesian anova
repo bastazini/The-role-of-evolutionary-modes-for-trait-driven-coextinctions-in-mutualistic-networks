@@ -1,4 +1,15 @@
-y=(c(RESULTADOS4[,1],RESULTADOS4[,2],RESULTADOS4[,3],RESULTADOS4[,4]))
+##Loading data
+random=read.table(file.choose(),h=T)
+bm=read.table(file.choose(),h=T)
+strong=read.table(file.choose(),h=T)
+weak=read.table(file.choose(),h=T)
+y=(c(random,bm,strong,weak))
+x=(rep(1:4,each=10000))
+x
+
+bm2=subset(bm$robustness_distinc, bm$power_H == 1);bm
+rho_n=subset(bm$robustness_distinc, bm$power_H == 5);rho_n
+cohen.d(rho_n,bm2)
 x=(rep(1:4,each=10000))
 x
 
