@@ -1,0 +1,55 @@
+y=(c(RESULTADOS4[,1],RESULTADOS4[,2],RESULTADOS4[,3],RESULTADOS4[,4]))
+x=(rep(1:4,each=10000))
+x
+
+require(MASS)
+ymg = tapply(y,x,mean);ymg
+
+# Variance
+
+variancia =tapply(y,x,var);variancia
+
+
+
+# number of observation in each scenario(np)
+#total number of observations (n) 
+#number of levels for the factor  evoultionary signal (niveis):
+np = tapply(y,x,length)
+n = sum(np)
+niveis = length(np)
+#calculating variance (Se2) 
+#diagonal matrix (Vμ), 
+s2hat <- sum((np-1)*variancia)/(n-niveis)
+Vmu <- diag(1/np)
+#Psize of the posterior distribution
+m = 5000
+# sampling precision
+tau <- rgamma(m,(n-niveis)/2,s2hat*(n-niveis)/2)
+# amostra do desvio padrão (σ)
+sigma <- sqrt(1/tau)
+med.post <- numeric()
+#  posterior mean
+for(i in 1:m) med.post <- rbind(med.post,mvrnorm(1,as.numeric(ymg),Vmu/tau[i]))
+#summary of the posterior distribution:
+c(quantile(sigma,prob=c(0.025,0.5,0.975)),media=mean(sigma),dp=sd(sigma))
+#ICr95%)  
+#Summary for each level of the factor evolutionary signal
+for(i in 1:ncol(med.post)) {print(c(quantile(med.post[,i],prob=c(0.025,0.5,0.975)),  media=mean(med.post[,i]),dp=sd(med.post[,i]))) }
+# Distribuição posterior.
+plot(density(med.post[,1]),xlim=c(0.52,0.57),ylim=c(0,400),xlab="Robustness",ylab= "Density",main=expression(rho==5))
+lines(density(med.post[,2]),col="red")
+lines(density(med.post[,3]),col="blue")
+lines(density(med.post[,4]),col="darkgreen")
+
+plot(density(med.post[,1]),probability="T")
+##
+h <- hist(med.post[,4], breaks = 100, plot=FALSE)
+h$counts=h$counts/sum(h$counts)
+plot(h,main="",xlab="Posterior Distribution")
+
+#probability that μ3 is larger then μ2 
+sum(med.post[,2]>med.post[,1])/m
+#probability that μ2 is larger then μ4
+sum(med.post[,3]>med.post[,2])/m
+#probability thatμ4 is larger then μ1
+sum(med.post[,4]>med.post[,3])/m
