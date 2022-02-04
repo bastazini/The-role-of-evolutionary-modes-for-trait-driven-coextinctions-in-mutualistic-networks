@@ -19,7 +19,7 @@ runs <- 1000
 power_H <- c(0.0001,1,2,5)
 complementarity <- c(0.25, 0.5, 1)
 
-## must be run 4 times, one for each scnario of power_L lines 74 and 75
+## must be run 4 times, one for each scenario of power_L lines 74 and 75
 
 n_niveis <- length(power_H)
 n_complementarity <- length(complementarity)
@@ -197,14 +197,7 @@ RESULTADOS_INDEX
 # write.table(RESULTADOS_INDEX,"RESULTADOS_INDEX.txt")
 
 
-####
-# orgnizamos ate aqui
-
-dim(RESULTADOS)
-
-WEB
-RESULTADOS
-
+##############################################################
 ##save each set of simulations
 #RESULTADOS_NS<-RESULTADOS
 #RESULTADOS_BM<-RESULTADOS
