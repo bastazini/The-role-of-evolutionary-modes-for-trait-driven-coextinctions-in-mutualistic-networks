@@ -1,0 +1,129 @@
+##Functional distinctvness
+library(plotrix)
+###Fig 2
+par(mar=c(4,8,1,1))
+x=c(1,2,3)
+avg=c(0.6991626057,0.7018724831,0.821213874)
+lower=c(0.6978482565,0.7005813948,0.819933509)
+upper=c(0.7004183162,0.7031631273,0.822465391)
+plot(1, type="n", ylab="", yaxt="n", xlab="95% Credible Interval", xlim=c(0.69, 0.8299), ylim=c(0, 3), main="")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+abline(v=0,lty=2, lwd=3,col="red")
+axis(side=2,at=x,label=c("Trait 
+distinctiveness","Size", "Random"),cex.lab=14, las=2,xlim=c(0.67,0.83))
+
+###Fig 3
+layout((matrix(c(1,2,3), nrow = 1, ncol = 3, byrow = FALSE)))
+par(mar=c(4.5, 5.5, 3, 1))
+
+#Random
+x=c(1,2,3,4)
+lower=c(0.825710366,0.827977226,0.82211652,0.800667445)
+avg=c(0.827826185,0.830059219,0.82418359,0.802782835)
+upper=c(0.829926434,0.832041454,0.82622982,0.804759859)
+
+plot(1, type="n", ylab="", yaxt="n", xlab="", cex=2, xlim=c(0.8000, 0.8399), ylim=c(0, 4), main="Random")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+axis(side=2,at=x,cex=2,label=c(expression(paste("",rho," = 1e-04")),
+expression(paste("",rho," = 1")),
+             expression(paste("",rho," = 2")),
+expression(paste("",rho," = 5"))
+),cex.lab=14, las=2)
+
+# Trait distinctiveness
+x=c(1,2,3,4)
+lower=c(0.713190731,0.710789520,0.696574237,0.664134220)
+avg=c(0.716241926,0.713813007,0.699594014,0.667081098)
+upper=c(0.719229702,0.716785855,0.702533000,0.670038138)
+
+plot(1, type="n", ylab="", yaxt="n", cex=2,xlab="Robustness (95% Credible Interval)", xlim=c(0.65, 0.73), ylim=c(0, 4), main="Trait distinctiveness")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+
+
+###Size
+x=c(1,2,3,4)
+lower=c(0.706178791,0.703932662,0.697778368,0.689400454)
+avg=c(0.708736128,0.706439888,0.700315405,0.691927335)
+upper=c(0.711274885,0.709045189,0.702911280,0.694532374)
+
+plot(1, type="n", ylab="", yaxt="n",cex=2, xlab="", xlim=c(0.68, 0.72), ylim=c(0, 4), main="Size")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+
+###Fig 4
+layout((matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3, byrow = T)))
+par(mar=c(4,5,1,1))
+##Distinct
+
+##weak
+x=c(1,2,3,4)
+lower=c(0.743245827,0.735230521,0.71020112,0.670871848)
+avg=c(0.748987461,0.741086090,0.71586553,0.677078084)
+upper=c(0.754646366,0.746912236,0.72187689,0.682885870)
+
+plot(1, type="n", ylab="", yaxt="n", xlab="", cex=2, xlim=c(0.67, 0.76), ylim=c(0, 4), main="Weak Phylogenetic signal")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+axis(side=2,at=x,cex=2,label=c(expression(paste("",rho," = 1e-04")),
+                               expression(paste("",rho," = 1")),
+                               expression(paste("",rho," = 2")),
+                               expression(paste("",rho," = 5"))
+),cex.lab=14, las=2)
+###Brownian motion
+x=c(1,2,3,4)
+lower=c(0.726244603,0.718691989,0.70092314,0.668889877)
+avg=c(0.731979090,0.724501398,0.70659327,0.674747185)
+upper=c(0.737768318,0.730563560,0.71247665,0.680915062)
+
+plot(1, type="n", ylab="", yaxt="n", xlab="", cex=2, xlim=c(0.67, 0.74), ylim=c(0, 4), main="Brownian Motion")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+
+###Strong 
+x=c(1,2,3,4)
+lower=c(0.67137825,0.676015854,0.675416084,0.644584532)
+avg=c(0.67750378,0.682080581,0.681503954,0.650560976)
+upper=c(0.68372387,0.688121715,0.687606882,0.656621257)
+
+plot(1, type="n", ylab="", yaxt="n", xlab="", cex=2, xlim=c(0.64, 0.7), ylim=c(0, 4), main="Strong Phylogenetic signal")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+
+####Size
+##weak
+x=c(1,2,3,4)
+lower=c(0.671405449,0.675998963,0.675498649,0.644546649)
+avg=c(0.677406992,0.682160490,0.681625907,0.650537504)
+upper=c(0.683590668,0.688048176,0.687773895,0.656624345)
+
+plot(1, type="n", ylab="", yaxt="n", xlab="", cex=2, xlim=c(0.64, 0.69), ylim=c(0, 4), main="")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+axis(side=2,at=x,cex=2,label=c(expression(paste("",rho," = 1e-04")),
+                               expression(paste("",rho," = 1")),
+                               expression(paste("",rho," = 2")),
+                               expression(paste("",rho," = 5"))
+),cex.lab=14, las=2)
+###Brownian motion
+x=c(1,2,3,4)
+lower=c(0.705542451,0.702694031,0.694924016,0.682970255)
+avg=c(0.710470128,0.707804160,0.700007575,0.687922926)
+upper=c(0.715752518,0.712757187,0.705083298,0.692985500)
+
+plot(1, type="n", ylab="", yaxt="n", xlab="Robustness (95% Credible Interval)", cex=2, xlim=c(0.68, 0.72), ylim=c(0, 4), main="")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+
+###Strong 
+x=c(1,2,3,4)
+lower=c(0.690889486,0.694142701,0.693898714,0.690508596)
+avg=c(0.696010774,0.699240472,0.699173475,0.695695618)
+upper=c(0.701191180,0.704389597,0.704132674,0.700727878)
+
+plot(1, type="n", ylab="", yaxt="n", xlab="", cex=2, xlim=c(0.68, 0.72), ylim=c(0, 4), main="")
+points(avg,x, pch=16,cex=1)
+arrows(lower, x, upper,  x, length=0.05, angle=90, code=3,lwd=2.5)
+
