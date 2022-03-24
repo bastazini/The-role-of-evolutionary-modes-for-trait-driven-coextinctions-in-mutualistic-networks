@@ -2,10 +2,12 @@
 # The role of evolutionary modes for trait driven coextinctions in mutualistic networks network
 #Author: Vinicius Bastazini et al.
 #Last updated: 2017_07_26
+#reviwed: 2022_03_23
 #Contact: bastazini.vinicius@gmail.com
 ####################################
 
-#Run the main simulation for each level of phylogenetic signal.
+##Run the main simulation for each level of phylogenetic signal.
+#packages
 require(geiger)
 require(plotrix)
 require(picante)
@@ -13,7 +15,7 @@ require(bipartite)
 
 #rm(list=ls())
 
-# Specify the number of runs, power of phylogenetic signal and the level of trait complementary
+# Specify the number of runs, the power of phylogenetic signal and the level of trait complementary
 
 runs <- 1000
 power_H <- c(0.0001,1,2,5)
@@ -24,6 +26,7 @@ complementarity <- c(0.25, 0.5, 1)
 n_niveis <- length(power_H)
 n_complementarity <- length(complementarity)
 
+#organizing results
 # RESULTADOS <- matrix(NA, runs * n_complementarity, (n_niveis * 3)+2)
 # nomes<-expand.grid(c("distinc","trait","randon"), power_H)
 # names<-as.data.frame(nomes)
@@ -40,7 +43,7 @@ n_complementarity <- length(complementarity)
 
 RESULTADOS <- matrix(NA, runs * n_complementarity * n_niveis, 7)
 colnames(RESULTADOS) <- c("robustness_distinc","robustness_trait","robustness_randon", "runs", "power_H", "complementarity", "power_L")
-	
+
 contagem<-0
 WEB<-vector("list", runs * n_complementarity * n_niveis)
 for (p in 1:n_complementarity) {
