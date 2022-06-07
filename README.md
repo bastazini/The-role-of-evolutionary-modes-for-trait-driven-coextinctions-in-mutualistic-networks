@@ -1,4 +1,4 @@
 
 R code for the paper 'The role of evolutionary modes for trait-based cascades in mutualistic networks'
-Bastazini et al. 2022. Ecological Modelling.
+Bastazini et al. 2022. Ecological Modelling 470: 109983.
 https://doi.org/10.1016/j.ecolmodel.2022.109983
